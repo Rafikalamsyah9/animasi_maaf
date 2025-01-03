@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Permintaan Maaf dan Kejutan</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        color: #fff;
+        background: #ff9a9e;
+        overflow: hidden;
+      }
+
+      .container {
+        text-align: center;
+        padding: 20px;
+        display: none;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .page {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .page-1 {
+        background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+      }
+
+      .page-2 {
+        background: linear-gradient(to bottom right, #b2fefa, #0ed2f7);
+      }
+
+      .heart {
+        position: relative;
+        width: 100px;
+        height: 90px;
+        margin: 0 auto 20px;
+        animation: heartbeat 1.5s infinite;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        background: #ff6f61;
+        border-radius: 50%;
+        transform: translate(-50%, 0);
+      }
+
+      .heart::after {
+        left: 50%;
+        transform: translate(50%, 0);
+      }
+
+      .heart {
+        background: #ff6f61;
+        transform: rotate(-45deg);
+      }
+
+      h1 {
+        font-size: 2em;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        animation: slideIn 1s ease-out;
+      }
+
+      p {
+        font-size: 1.2em;
+        animation: fadeIn 2s ease-out;
+      }
+
+      button {
+        padding: 12px 24px;
+        background-color: #ff6f61;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        margin: 15px;
+      }
+
+      button:hover {
+        background-color: #ff8a75;
+        transform: scale(1.1);
+      }
+
+      button:active {
+        transform: scale(0.95);
+      }
+
+      .character {
+        width: 150px;
+        height: auto;
+        margin: 0 15px;
+        animation: bounce 2s infinite;
+      }
+
+      .sosweed img {
+        width: 300px;
+        height: auto;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-30px);
+        }
+        60% {
+          transform: translateY(-15px);
+        }
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(1.1);
+        }
+        50% {
+          transform: scale(1);
+        }
+        75% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes slideIn {
+        0% {
+          transform: translateX(-50px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Halaman 1 -->
+    <div class="page page-1 container" id="page-1">
+      <div class="heart"></div>
+      <h1>Maafin aa ya Riska, jangan cuekin aa dong ❤️</h1>
+      <p>
+        Aa nggak mau kita berlama-lama marahan. Aa sayang banget sama kamu 😘
+      </p>
+      <div>
+        <img class="character" src="animasi.png" alt="Laki-laki minta maaf" />
+        <img
+          class="character"
+          src="animasi_cw.png"
+          alt="Perempuan mendengarkan"
+        />
+      </div>
+      <button onclick="showPage('page-2')">Lihat Kejutan</button>
+      <button onclick="window.location.href='sosweed.html'">
+        Lihat Sosweed
+      </button>
+    </div>
+
+    <!-- Halaman 2 -->
+    <div class="page page-2 container" id="page-2">
+      <div class="sosweed">
+        <img src="ilove.png" alt="Sosweed" />
+      </div>
+      <h1>I love U Riska</h1>
+      <p>Semoga ini bisa membuatmu tersenyum lagi 😊</p>
+      <button onclick="showPage('page-1')">Kembali</button>
+      <button onclick="window.location.href='sosweed.html'">
+        Lihat Sosweed
+      </button>
+    </div>
+
+    <script>
+      function showPage(pageId) {
+        document.querySelectorAll(".container").forEach((page) => {
+          page.style.display = "none";
+        });
+        document.getElementById(pageId).style.display = "flex";
+      }
+
+      // Tampilkan halaman pertama saat halaman dimuat
+      document.addEventListener("DOMContentLoaded", () => {
+        showPage("page-1");
+      });
+    </script>
+  </body>
+</html>
